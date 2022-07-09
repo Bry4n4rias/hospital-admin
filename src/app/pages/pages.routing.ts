@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { DaashboardComponent } from './daashboard/daashboard.component';
 import { Grafica1Component } from './grafica1/grafica1.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
     // y ahi se econtrara lo q pusimos en data, esta en el breadcrumbs
     path: 'dashboard',
     component: PagesComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
