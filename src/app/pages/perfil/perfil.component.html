@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Mi perfil</h4>
+        <h6 class="card-subtitle">Ajustes</h6>
+        <form [formGroup]="perfilForm" (submit)="actualizarPerfil()" class="form p-t-20">
+          <div class="form-group">
+            <label for="exampleInputuname">User Name</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input formControlName="nombre" type="text" class="form-control" id="exampleInputuname"
+                placeholder="Nombre de usuario">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-email"></i></div>
+              <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+                placeholder="Ingresa el email">
+            </div>
+          </div>
+          <button [disabled]="perfilForm.invalid" type="submit"
+            class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-save"></i>
+            Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Avatar</h4>
+        <h6 class="card-subtitle">Imagen de usuario</h6>
+
+        <div class="text-center">
+          <!-- si no existe imagen temporal se muestra la q esta grabada en la bd, pero si existe la temporal osea 
+          la nueva se muestra esa -->
+          <img *ngIf="!imgTemp" [src]="usuario.imagenUrl" class="img-avatar">
+          <img *ngIf="imgTemp" [src]="imgTemp" class="img-avatar">
+        </div>
+        <input type="file" (change)="cambiarImagen($any($event.target).files[0])">
+        <br>
+        <br>
+        <button (click)="subirimagen()" [disabled]="!imagenSubir" type="button"
+          class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-save"></i>
+          Cambiar imagen</button>
+
+
+      </div>
+    </div>
+  </div>
+</div>
