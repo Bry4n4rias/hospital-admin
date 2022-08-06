@@ -8,3 +8,30 @@
   height: 200px;
   width: 200px;
 }
+
+.w100 {
+  width: 100px;
+}
+
+.w140 {
+  width: 140px;
+}
+
+.avatar {
+  width: 30px;
+  border-radius: 100%;
+}
+
+.fondo-modal-imagen {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
+.oculto {
+  display: none;
+}
