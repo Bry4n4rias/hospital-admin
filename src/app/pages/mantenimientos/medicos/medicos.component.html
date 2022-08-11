@@ -1,0 +1,71 @@
+<div class="row animated fadeIn fast">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <input type="text" class="form-control" placeholder="Buscar medico" #txtTermino
+          (keyup)="buscar(txtTermino.value)" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+  <div class="col-12">
+    <div class="alert alert-info text-center">
+      <h4 class="alert-heading">Cargando</h4>
+      <i class="fa fa-spin fa-refresh fa-2x"></i>
+      <p class="mb-0">Por favor espere</p>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="!cargando">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col8">
+            <h4 class="card-title">Medicos {{medicos.length}}</h4>
+            <h6 class="card-subtitle">Medicos registrados en la plataforma</h6>
+          </div>
+          <div class="col">
+            <div class="text-right"><a class="btn btn-primary" routerLink="/dashboard/medico/nuevo">
+                <i class="fa fa-hospital-o "></i>
+                Crear medico
+              </a></div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th class="w100">Imagen</th>
+                  <th>Nombre</th>
+                  <th class="w100 text-nowrap">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let medico of medicos">
+                  <td class="text-center">
+                    <img [src]="medico.img! | imagen:'medicos'" alt="" class="w100 cursor" (click)="abrirModal(medico)">
+                  </td>
+                  <td>{{medico.nombre}}</td>
+
+                  <td class="text-nowrap">
+                    <a [routerLink]="['/dashboard/medico', medico._id]" data-toggle="tooltip"
+                      data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                    <a class="cursor" (click)="borrarMedico(medico)" data-toggle="tooltip" data-original-title="Borrar">
+                      <i class="fa fa-close text-danger"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- <button class="btn btn-secondary">Siguiente</button>
+        &nbsp;
+        <button class="btn btn-secondary">Anterior</button> -->
+        </div>
+      </div>
+    </div>
+  </div>

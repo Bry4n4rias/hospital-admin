@@ -62,7 +62,7 @@ export class UsuariosComponent implements OnInit {
       return (this.usuarios = this.usuariosTemp);
     }
 
-    this.busquedaService.buscar('usuarios', termino).subscribe((resp) => {
+    this.busquedaService.buscar('usuarios', termino).subscribe((resp: any) => {
       this.usuarios = resp!;
     });
   }

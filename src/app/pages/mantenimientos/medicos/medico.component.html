@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Medico</h4>
+        <h6 class="card-subtitle">Actualizar informacion</h6>
+
+        <form [formGroup]="medicoForm" (submit)="guardarMedico()" class="form-horizontal p-t-20">
+          <div class="form-group row" *ngIf="medicoSeleccionado">
+            <label for="exampleInputuname3" class="col-sm-3 control-label">Foto</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <img class="w200" [src]="medicoSeleccionado.img! | imagen:'medicos'" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="exampleInputuname3" class="col-sm-3 control-label">Nombre</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="ti-user"></i></div>
+                <input formControlName="nombre" type="text" class="form-control" id="exampleInputuname3"
+                  placeholder="Nombre del medico">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="exampleInputEmail3" class="col-sm-3 control-label">Hospital</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <select formControlName="hospital" class="form-control">
+                  <option value="">Selecciones hospital</option>
+                  <option *ngFor="let hospital of hospitales" [value]="hospital._id">{{hospital.nombre}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row m-b-0">
+            <div class="offset-sm-3 col-sm-9">
+              <button [disabled]="medicoForm.invalid" type="submit" class="btn btn-success waves-effect waves-light"><i
+                  class="fa fa-save"></i> Guardar
+                cambios</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6" *ngIf="hospitalSeleccionado">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Hospital</h4>
+        <h6 class="card-subtitle">{{hospitalSeleccionado.nombre}}</h6>
+        <img class="w200" [src]="hospitalSeleccionado.img | imagen:'hospitales'" alt="">
+
+      </div>
+    </div>
+  </div>
+</div>
