@@ -27,11 +27,9 @@ export class LoginComponent {
   login() {
     this.usuarioService.login(this.loginForm.value).subscribe(
       (resp: any) => {
-        console.log(resp);
         this.router.navigateByUrl('/');
       },
       (err) => {
-        console.log(err);
 
         Swal.fire('Error', err.error.msg, 'error');
       }

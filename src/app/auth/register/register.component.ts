@@ -32,7 +32,6 @@ export class RegisterComponent {
 
   crearUsuario() {
     this.formSubmited = true;
-    console.log(this.registerForm.value);
     if (this.registerForm.invalid) {
       return;
     } else {
@@ -40,8 +39,6 @@ export class RegisterComponent {
       // auqneu le estamos mandando mas campos como el password2 el backend lo ignora al no estar en su modelo
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
         (resp) => {
-          console.log('Usuario creado');
-          console.log(resp);
           this.router.navigateByUrl('/');
         },
         (err) => {
