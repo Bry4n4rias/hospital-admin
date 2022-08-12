@@ -25,6 +25,10 @@ export class UsuarioService {
     return localStorage.getItem('token') || '';
   }
 
+  get role(): 'ADMIN_ROLE' | 'USER_ROLE' {
+    return this.usuario.role!;
+  }
+
   get uid() {
     return this.usuario.uid;
   }
@@ -39,6 +43,7 @@ export class UsuarioService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('menu');
     this.router.navigateByUrl('/login');
   }
 
@@ -68,6 +73,7 @@ export class UsuarioService {
             );
             this.usuario.imprimirUsuario();
             localStorage.setItem('token', resp.token);
+            localStorage.setItem('menu', JSON.stringify(resp.menu));
           }),
           // si hay respuesta, osea si ya hay token retorna true
           map((resp) => {
@@ -84,6 +90,7 @@ export class UsuarioService {
       //Por ejemplo, si quieres guardar un evento en localstorage
       tap((resp: any) => {
         localStorage.setItem('token', resp.token);
+        localStorage.setItem('menu', JSON.stringify(resp.menu));
       })
     );
   }
@@ -106,6 +113,7 @@ export class UsuarioService {
       //Por ejemplo, si quieres guardar un evento en localstorage
       tap((resp: any) => {
         localStorage.setItem('token', resp.token);
+        localStorage.setItem('menu', JSON.stringify(resp.menu));
       })
     );
   }
