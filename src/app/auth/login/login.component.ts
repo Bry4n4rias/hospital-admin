@@ -13,7 +13,7 @@ import { map } from 'rxjs';
 })
 export class LoginComponent {
   public loginForm = this.fb.group({
-    email: ['bryan20@gmail.com', [Validators.required, Validators.email]],
+    email: ['bryan1@gmail.com', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
     remember: [false],
   });
