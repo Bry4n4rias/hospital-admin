@@ -14,7 +14,7 @@ import { map } from 'rxjs';
 export class LoginComponent {
   public loginForm = this.fb.group({
     email: ['bryan1@gmail.com', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
+    password: ['123456', [Validators.required]],
     remember: [false],
   });
 
@@ -30,7 +30,6 @@ export class LoginComponent {
         this.router.navigateByUrl('/');
       },
       (err) => {
-
         Swal.fire('Error', err.error.msg, 'error');
       }
     );

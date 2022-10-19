@@ -8,7 +8,6 @@ export class SidebarService {
 
   cargarMenu() {
     this.menu = JSON.parse(localStorage.getItem('menu')!) || [];
-    console.log(this.menu);
   }
 
   // menu: any[] = [

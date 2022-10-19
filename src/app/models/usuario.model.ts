@@ -13,9 +13,7 @@ export class Usuario {
     public uid?: string
   ) {}
 
-  imprimirUsuario() {
-    console.log(this.nombre);
-  }
+  imprimirUsuario() {}
 
   get imagenUrl() {
     if (this.img) {
